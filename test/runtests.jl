@@ -1,6 +1,17 @@
 using ImageNoise
-using Test
+using ImageCore, ImageTransformations, ImageQualityIndexes
+using Test, ReferenceTests, TestImages, Random
 
-include("noise.jl")
-include("imnoise.jl")
-include("imdenoise.jl")
+include("testutils.jl")
+
+@testset "ImageNoise" begin
+# ApplyNoise
+@info "Test: ApplyNoise"
+include("ApplyNoise/AdditiveWhiteGaussianNoise.jl")
+
+# ReduceNoise
+@info "Test: ReduceNoise"
+include("ReduceNoise/NonlocalMean.jl")
+end
+
+nothing
